@@ -8,11 +8,11 @@ const Quotation = () => {
     <View>
         <Text style = {styles.title}>Solicitud de cotizacion</Text>
         <Text style={styles.titleForm}>Nombre completo</Text>
-        <TextInput label={"Nombre"}/>    
+        <TextInput style={styles.textInput} label={"Nombre"}/>    
         <Text style={styles.titleForm}>Modelo del Vehiculo</Text>
-        <TextInput label={"Modelo del vehiculo"}/>    
+        <TextInput style={styles.textInput} label={"Modelo del vehiculo"}/>    
         <Text style={styles.titleForm}>Correo</Text>
-        <TextInput label={"example@correo.com"}/>
+        <TextInput style={styles.textInput} label={"example@correo.com"}/>
         <Button mode = "contained" style={styles.button}>Enviar solicitud</Button>                      
     </View>
   </PaperProvider>
@@ -20,10 +20,10 @@ const Quotation = () => {
 }
 const styles = StyleSheet.create({
     title:{
-        backgroundColor: '#7F62F0',
+        backgroundColor: '#0f83b8',
         textAlign:'center',
         fontSize: 30,
-        color: 'black',
+        color: 'white',
         marginVertical:30
     },
     titleForm:{
@@ -34,7 +34,11 @@ const styles = StyleSheet.create({
 
     },
     button:{
-      marginVertical:30
+      marginVertical:30,
+      backgroundColor: '#0f83b8'
+    },
+    textInput:{
+      backgroundColor:'#afd1e7'
     }
 })
 export default Quotation

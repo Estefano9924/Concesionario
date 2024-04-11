@@ -13,6 +13,7 @@ import Offers from './src/views/Offers'
 import Contact from './src/views/Contact'
 import RegisterContact from './src/views/RegisterContact'
 import RegisterServices from './src/views/RegisterServices'
+import RegisterTestDrive from './src/views/RegisterTestDrive'
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
           <Stack.Screen name = "Contact" component={Contact}/>
           <Stack.Screen name = "RegisterContact" component={RegisterContact}/>
           <Stack.Screen name = "RegisterServices" component={RegisterServices}/>
+          <Stack.Screen name = "RegisterTestDrive" component={RegisterTestDrive}/>
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

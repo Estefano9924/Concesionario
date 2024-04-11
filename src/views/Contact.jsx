@@ -31,17 +31,17 @@ const Contact = ({navigation}) => {
           </View>
           <View style={styles.formContain}>
           <Text style={styles.form}>Nombre completo</Text>
-          <TextInput value={name} onChangeText={name =>Setname(name)}></TextInput>
+          <TextInput style={styles.textinput} value={name} onChangeText={name =>Setname(name)}></TextInput>
           <Text style={styles.form}>Documento</Text>
-          <TextInput value={typeId} onChangeText={typeId =>SettypeId(typeId)}></TextInput>
+          <TextInput style={styles.textinput} value={typeId} onChangeText={typeId =>SettypeId(typeId)}></TextInput>
           <Text style={styles.form}>Numero Documentos</Text>
-          <TextInput value={id} onChangeText={id =>SetId(id)}></TextInput>
+          <TextInput style={styles.textinput} value={id} onChangeText={id =>SetId(id)}></TextInput>
           <Text style={styles.form}>Telefono</Text>
-          <TextInput value={number} onChangeText={number =>SetNumber(number)}></TextInput>
+          <TextInput style={styles.textinput} value={number} onChangeText={number =>SetNumber(number)}></TextInput>
           <Text style={styles.form}>Correo</Text>
-          <TextInput value={email} onChangeText={email =>SetEmail(email)}></TextInput>
+          <TextInput style={styles.textinput} value={email} onChangeText={email =>SetEmail(email)}></TextInput>
           <Text style={styles.form}>Ciudad</Text>
-          <TextInput value={city} onChangeText={city =>SetCity(city)}></TextInput>
+          <TextInput style={styles.textinput} value={city} onChangeText={city =>SetCity(city)}></TextInput>
           <Button mode='contained' style={styles.formButton} onPress={HandlerSend}>Enviar</Button>
           </View>
         </View>
@@ -56,10 +56,10 @@ const styles = StyleSheet.create({
     justifyContent: 'Center'
   },
   title: {
-    backgroundColor: '#7F62F0',
+    backgroundColor: '#0f83b8',
     textAlign: 'center',
     fontSize: 30,
-    color: 'black',
+    color: 'white',
     marginVertical: 30
   },
   ContImage: {
@@ -90,7 +90,11 @@ const styles = StyleSheet.create({
     marginHorizontal:20
   },
   formButton:{
-    marginTop: 40
+    marginTop: 40,
+    backgroundColor: '#0f83b8'
+  },
+  textinput:{
+    backgroundColor:'#afd1e7'
   }
 })
 export default Contact

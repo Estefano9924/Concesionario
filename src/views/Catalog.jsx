@@ -51,10 +51,10 @@ const Catalog = (navigation) => {
 }
 const styles = StyleSheet.create({
     title:{
-        backgroundColor: '#7F62F0',
+        backgroundColor: '#0f83b8',
         textAlign:'center',
         fontSize: 30,
-        color: 'black',
+        color: 'white',
         marginVertical:30
     },
     container:{

@@ -50,18 +50,18 @@ const RepairCar = ({ navigation }) => {
 
                 <View>
                     <Text style={styles.TextForm}>Nombre completo</Text>
-                    <TextInput value={name} onChangeText={Setname} label={"Ingrese el nombre"} />
+                    <TextInput style={styles.textInput} value={name} onChangeText={Setname} label={"Ingrese el nombre"} />
                     <Text style={styles.TextForm}>Numero Documento</Text>
-                    <TextInput value={number} onChangeText={SetNumber} label={"Ingrese su Numero de Documento"} />
+                    <TextInput style={styles.textInput} value={number} onChangeText={SetNumber} label={"Ingrese su Numero de Documento"} />
                     <Text style={styles.TextForm}>Modelo del Vehiculo</Text>
-                    <TextInput value={model} onChangeText={SetModel} label={"Ingrese el modelo del vehiculo"} />
+                    <TextInput style={styles.textInput} value={model} onChangeText={SetModel} label={"Ingrese el modelo del vehiculo"} />
                     <Text style={styles.TextForm}>Placa Vehiculo</Text>
-                    <TextInput value={id} onChangeText={SetId} label={"Ingrese la Placa del vehiculo"} />
+                    <TextInput style={styles.textInput} value={id} onChangeText={SetId} label={"Ingrese la Placa del vehiculo"} />
                     <Text style={styles.TextForm}>Servicio</Text>
-                    <TextInput value={service} onChangeText={SetServices} label={"Ingrese el servicio que desea"} />
+                    <TextInput style={styles.textInput} value={service} onChangeText={SetServices} label={"Ingrese el servicio que desea"} />
                     <Text style={styles.TextForm}>Fecha</Text>
-                    <TextInput value={date} onChangeText={SetDate} label={"DD/MM/AAAA : HH:hh"} />
-                    <Button style={{ marginVertical: 20 }} mode="contained" onPress={Send}>Enviar solicitud</Button>
+                    <TextInput style={styles.textInput} value={date} onChangeText={SetDate} label={"DD/MM/AAAA : HH:hh"} />
+                    <Button style={styles.button} mode="contained" onPress={Send}>Enviar solicitud</Button>
                 </View>
             </ScrollView>
         </PaperProvider>
@@ -69,17 +69,18 @@ const RepairCar = ({ navigation }) => {
 }
 const styles = StyleSheet.create({
     title: {
-        backgroundColor: '#7F62F0',
+        backgroundColor: '#0f83b8',
         textAlign: 'center',
         fontSize: 30,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'white',
         marginVertical: 30
     },
     card: {
         marginVertical: 20,
         marginHorizontal: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        backgroundColor: '#afd1e7'
     },
     contain: {
         flex: 1
@@ -93,6 +94,13 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         fontSize: 20,
         fontWeight: 'bold'
+    },
+    button:{
+        backgroundColor: '#0f83b8',
+        marginVertical: 20
+    },
+    textInput:{
+        backgroundColor: '#afd1e7'
     }
 })
 export default RepairCar

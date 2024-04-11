@@ -7,30 +7,33 @@ import { Button, PaperProvider, Text, TextInput, Modal, Portal } from 'react-nat
 
 const SearchVehicle = ({navigation}) => {
   const [visible, setVisible] = useState(false);
+  const [vehicle, setVehicle] = useState('');
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const Send = () => Alert.alert("El carro no se encuentra");
+  const vehicleChange = (text) =>{
+    setVehicle(text);
+  }
+  const Send = () => Alert.alert("El vehiculo "+vehicle+" no se encuentra");
   return (
     <PaperProvider>
         
       <Text style={styles.title}>Busqueda de vehiculos</Text>
-      <Text >Ingrese el modelo del vehiculo</Text>
-      <TextInput
-        label="Buscar modelo del vehiculo" />
+      <Text style={styles.subText}>Ingrese el modelo del vehiculo</Text>
+      <TextInput style = {styles.textInput} value={vehicle} onChangeText={vehicleChange} />
       <Portal>
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.container}>
           <Text>Example Modal</Text>
         </Modal>
       </Portal>
-      <Button style={{ marginTop: 10 }} onPress={Send}>Buscar</Button>
+      <Button style={styles.button} onPress={Send}>Buscar</Button>
         
     </PaperProvider>
   )
 }
 const styles = StyleSheet.create({
     title:{
-        backgroundColor: '#7F62F0',
+        backgroundColor: '#0f83b8',
         textAlign:'center',
         fontSize: 30,
         color: 'black',
@@ -41,6 +44,19 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       padding: 20, 
       marginHorizontal:30
+    },
+
+    button:{
+      marginTop: 10,
+      backgroundColor: '#0f83b8',
+      color: 'white'
+    },
+    textInput:{
+      backgroundColor: '#afd1e7'
+    },
+    subText:{
+      fontSize: 20,
+      textAlign:'center'
     }
 })
 export default SearchVehicle
