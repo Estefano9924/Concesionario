@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react'
 import Home from './src/views/Home'
 import { PaperProvider } from 'react-native-paper'
@@ -14,10 +15,12 @@ import Contact from './src/views/Contact'
 import RegisterContact from './src/views/RegisterContact'
 import RegisterServices from './src/views/RegisterServices'
 import RegisterTestDrive from './src/views/RegisterTestDrive'
+import FirebaseState from './carWorld/context/Firebase/firebaseState';
 
 const Stack = createStackNavigator();
 const App = () => {
   return (
+    
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
