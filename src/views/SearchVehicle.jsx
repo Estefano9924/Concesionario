@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Alert, StyleSheet, View } from 'react-native'
 import { Button, PaperProvider, Text, TextInput, Modal, Portal } from 'react-native-paper'
-
+import {Container} from "native-base"
 //import globalStyles from '../styles/globalStyles';
 
 
