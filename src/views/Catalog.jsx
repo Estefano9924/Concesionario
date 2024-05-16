@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native'
 import { PaperProvider, Text } from 'react-native-paper'
 import VehicleList from './VehicleList';
+import { useContext, useEffect, useState } from 'react';
 
 const Catalog = (navigation) => {
     const vehicles =[

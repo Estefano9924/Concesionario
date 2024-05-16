@@ -35,7 +35,7 @@ const FirebaseState = props =>{
             dispatch({
                 type: getVehicle,
                 payload: car
-            })
+            });
         }
     }
     return(

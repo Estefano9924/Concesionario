@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const PedidoContext = createContext ();
+const pedidoContext = createContext ();
 
-export default PedidoContext;
+export default pedidoContext;
