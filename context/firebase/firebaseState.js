@@ -10,17 +10,20 @@ const FirebaseState = props =>{
     const initialState ={
         vehiculo:[]
     }
-
+    
     //userReducer con el dispatch
     const [state, dispatch]= useReducer(FirebaseReducer,initialState)
+        console.log("antes de obtainVehicle")
     //traer los datos
-    const obtainVihicle = () =>{
+    
+    const obtainVehicle = () =>{
         //consulta a la bd
+        console.log("despues de obtainVehicle")
         firebase.db
         .collection('vehicle')//asi se llama la coleccion en firebase
         .onSnapshot(manejarSnapshot)//manejo de la base de datos en tiempo real
-       
-        function manejarSnapshot (snapshot){
+          
+        function manejarSnapshot(snapshot) {
             //desestructurar objeto
             let car = snapshot.docs.map(doc =>{
                 return{
@@ -29,8 +32,9 @@ const FirebaseState = props =>{
                 }
             });
             //Organizar informacion consultada lodahs
-            car = _.sortBy(car,'categoriaScrollView')
-            console.log(car) 
+            console.log("Antes del sort by")
+            car = _.sortBy(car,'Marca')
+            console.log(car)
             //el dispatch es del useReducer
             dispatch({
                 type: getVehicle,
@@ -42,15 +46,15 @@ const FirebaseState = props =>{
 
         <FirebaseContext.Provider
         value ={{
-            vehiculo: 
-            state.vehiculo,
+            vehiculo: state.vehiculo,
             firebase,
-            obtainVihicle
+            obtainVehicle
         }}
         >
             {props.children}
         </FirebaseContext.Provider>
     )
+
 }
 
 export default FirebaseState;
