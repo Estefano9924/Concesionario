@@ -12,7 +12,7 @@ const PedidoState = props =>{
 
     //userReducer con el dispatch
     const [state, dispatch]= useReducer(PedidoReducer,initialState)
-    const getVehicle = car => {
+    const chooseVehicle = car => {
         dispatch({
             type:selectVehicle,
             payload: car
@@ -23,9 +23,9 @@ const PedidoState = props =>{
 
         <PedidoContext.Provider
         value ={{
-            pedido: state.vehiculo,
+            pedido: state.pedido,
             car: state.car,
-            getVehicle
+            chooseVehicle
             
         }}
         >
