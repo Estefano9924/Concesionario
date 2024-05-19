@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native'
-import { PaperProvider, Text } from 'react-native-paper'
+import { Avatar, PaperProvider, Text } from 'react-native-paper'
 import VehicleList from './VehicleList';
 import FirebaseContext from '../../context/firebase/firebaseContext';
 import pedidoContext from '../../context/pedidos/pedidoContext';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Catalog = (navigation) => {
@@ -12,11 +13,11 @@ const Catalog = (navigation) => {
         obtainVehicle()
     },[])
    return (
-    
+    <ScrollView>
         <View style ={styles.container}>       
             <Text style = {styles.title}>Catalogo de vehiculos</Text>
             {vehiculo.map((car)=>{
-                const {id,Marca,Color,modelo,referencia} = car
+                const {id,Marca,Color,modelo,referencia,imagen} = car
                 return(
                     <View>
                     <Text>El id es: {id}</Text>
@@ -29,7 +30,7 @@ const Catalog = (navigation) => {
 
             })}
         </View>
-    
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
