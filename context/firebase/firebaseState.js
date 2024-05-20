@@ -13,12 +13,10 @@ const FirebaseState = props =>{
     
     //userReducer con el dispatch
     const [state, dispatch]= useReducer(FirebaseReducer,initialState)
-        console.log("antes de obtainVehicle")
     //traer los datos
     
     const obtainVehicle = () =>{
         //consulta a la bd
-        console.log("despues de obtainVehicle")
         firebase.db
         .collection('vehicle')//asi se llama la coleccion en firebase
         .onSnapshot(manejarSnapshot)//manejo de la base de datos en tiempo real
