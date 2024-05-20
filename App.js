@@ -17,6 +17,7 @@ import RegisterServices from './src/views/RegisterServices'
 import RegisterTestDrive from './src/views/RegisterTestDrive'
 import FirebaseState from './context/firebase/firebaseState'
 import PedidoState from './context/pedidos/pedidoState'
+import BuyVehicle from './src/views/BuyVehicle'
 
 
 const Stack = createStackNavigator();
@@ -40,6 +41,7 @@ const App = () => {
               <Stack.Screen name="RegisterContact" component={RegisterContact} />
               <Stack.Screen name="RegisterServices" component={RegisterServices} />
               <Stack.Screen name="RegisterTestDrive" component={RegisterTestDrive} />
+              <Stack.Screen name="BuyVehicle" component={BuyVehicle} />
             </Stack.Navigator>
           </NavigationContainer>
         </PaperProvider>

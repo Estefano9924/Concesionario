@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native'
 import { Avatar, PaperProvider, Text, Button, Card } from 'react-native-paper'
-import VehicleList from './VehicleList';
+import BuyVehicle from './BuyVehicle';
 import FirebaseContext from '../../context/firebase/firebaseContext';
 import pedidoContext from '../../context/pedidos/pedidoContext';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -33,7 +33,7 @@ const Catalog = () => {
                     <Card>
                         <Card.Cover source ={{uri:imagen}} />
                     </Card>
-                    <Button mode = "contained" style={styles.button} onPress={()=>{navigation.navigate('Contact')}}> Contactar 📱</Button>
+                    <Button mode = "contained" style={styles.button} onPress={()=>{navigation.navigate('BuyVehicle')}}> Comprar 📱</Button>
                     {/*<Image size ="70px" source ={{uri:imagen}}></Image> */}
                    {/*} <List.Item 
                     title = {Marca} 
