@@ -21,7 +21,7 @@ const Catalog = () => {
         <View style ={styles.container}>       
             <Text style = {styles.title}>Catalogo de vehiculos</Text>
             {vehiculo.map((car,i)=>{
-                const {id,Marca,Color,modelo,referencia,imagen} = car
+                const {id,Marca,Color,modelo,referencia,imagen,precio,descripcion} = car
                 return(
                     <Fragment key={id}>
                     <View style={{flexDirection: 'column', alignItems: 'end'}} >
@@ -30,6 +30,8 @@ const Catalog = () => {
                     <Text variant='titleMedium'>El Color es: <Text>{Color}</Text></Text>
                     <Text variant='titleMedium'>El modelo es: <Text>{modelo}</Text></Text>
                     <Text variant='titleMedium'>La referencia es: <Text>{referencia}</Text></Text>
+                    <Text variant='titleMedium'>El precio es: $<Text>{precio}</Text></Text>
+                    <Text variant='titleMedium'>La descripcion es: <Text>{descripcion}</Text></Text>
                     <Card>
                         <Card.Cover source ={{uri:imagen}} />
                     </Card>
