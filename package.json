@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
+<<<<<<< HEAD
     "expo": "~51.0.6",
     "expo-status-bar": "~1.12.1",
     "firebase": "^10.11.0",
@@ -22,6 +23,17 @@
     "react-native-paper": "^5.12.3",
     "react-native-safe-area-context": "4.10.1",
     "react-native-screens": "3.31.1"
+=======
+    "expo": "^49.0.23",
+    "expo-status-bar": "~1.11.1",
+    "firebase": "^10.11.0",
+    "react": "18.2.0",
+    "react-native": "0.73.5",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-paper": "^5.12.3",
+    "react-native-safe-area-context": "^4.10.1",
+    "react-native-screens": "^3.31.1"
+>>>>>>> 533878e8d27557e864a18a70c40e46dd91f96dee
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
