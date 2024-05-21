@@ -25,32 +25,15 @@ const Catalog = () => {
                 return(
                     <Fragment key={id}>
                     <View style={{flexDirection: 'column', alignItems: 'end'}} >
-                    <Text>El id es: {id}</Text>
-                    <Text>La marca es: {Marca}</Text>
-                    <Text>El Color es: {Color}</Text>
-                    <Text>El modelo es: {modelo}</Text>
-                    <Text>La referencia es: {referencia}</Text>
+                    {/*<Text variant='titleMedium'>El id es: {id}</Text>*/}
+                    <Text variant='titleMedium'>La marca es: <Text>{Marca}</Text></Text>
+                    <Text variant='titleMedium'>El Color es: <Text>{Color}</Text></Text>
+                    <Text variant='titleMedium'>El modelo es: <Text>{modelo}</Text></Text>
+                    <Text variant='titleMedium'>La referencia es: <Text>{referencia}</Text></Text>
                     <Card>
                         <Card.Cover source ={{uri:imagen}} />
                     </Card>
-                    <Button mode = "contained" style={styles.button} onPress={()=>{navigation.navigate('BuyVehicle')}}> Comprar 📱</Button>
-                    {/*<Image size ="70px" source ={{uri:imagen}}></Image> */}
-                   {/*} <List.Item 
-                    title = {Marca} 
-                    modelo = {modelo} 
-                    color ={Color}
-                        onPress ={()=>{
-                            chooseVehicle(car);
-                            navigation.navigate("Contact")
-                        }}
-                    >
-                        <Text>{Marca}</Text>
-                        <Text note
-                        numberOfLines={2}>{modelo}</Text>
-                        <Text note
-                        numberOfLines={2}>{Color}</Text>
-                        
-                    </List.Item>*/}
+                    <Button mode = "contained" style={styles.button} onPress={()=>{navigation.navigate('BuyVehicle')}}> Comprar 🛒</Button>
                     </View>
                     </Fragment>
                 )
