@@ -1,3 +1,12 @@
 //Manejo de los estados por componente
 export const getVehicle = 'getVehicle'
 export const selectVehicle = 'selectVehicle'
+export const getTestDrive = 'getTestDrive'
+export const selectTestDrive = 'selectTestDrive'
+export const sendTestDrive = 'sendTestDrive'
+export const getRepairCar = 'getRepairCar'
+export const selectRepairCar = 'selectRepairCar'
+export const getQuotation = 'getQuotation'
+export const selectQuotation = 'selectQuotation'
+export const getContact='getContact'
+export const selectContact='selectContact'

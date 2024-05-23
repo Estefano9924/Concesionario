@@ -2,21 +2,37 @@ import React, { useState } from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button, PaperProvider, Text, TextInput } from 'react-native-paper'
+import firebase from '../../firebase'
+import firebaseConfig from '../../firebase/config'
 
 
-const Contact = ({navigation}) => {
-
-  const [name, Setname]= useState('');
-  const [typeId, SettypeId]= useState('');
-  const [id, SetId]= useState('');
-  const [number, SetNumber]= useState('');
-  const [email, SetEmail]= useState('');
-  const [city, SetCity]= useState('');
-  
-  const HandlerSend =() =>{
-    navigation.navigate('RegisterContact',{name:name, typeId:typeId, id:id, number:number, email:email, city:city})
+const Contact = () => {
+const[saveContact,setSaveContact] = useState({
+  cCiudad:'',
+  cCorreo:'',
+  cNombreCompleto:'',
+  cNumeroDocumento:'',
+  cTelefono:''
+});
+const handleInputContact = (cName,value)=>{
+  setSaveContact({
+    ...saveContact,
+    [cName]:value
+  });
+};
+const handleSendContact = async () =>{
+  const {cNombreCompleto, cNumeroDocumento, cTelefono, cCorreo, cCiudad } = saveContact;
+  if(cNombreCompleto && cNumeroDocumento && cTelefono && cCorreo && cCiudad){
+    try{
+      await firebase.db.collection('contact').add(saveContact);
+      console.log('Contacto enviado');
+    }catch(error){
+      console.log(error);
+    }
+  }else{
+    console.log('Validar los campos por favor')
   }
-
+};
   return (
     <PaperProvider>
       <ScrollView>
@@ -31,18 +47,52 @@ const Contact = ({navigation}) => {
           </View>
           <View style={styles.formContain}>
           <Text style={styles.form}>Nombre completo</Text>
-          <TextInput style={styles.textinput} value={name} onChangeText={name =>Setname(name)}></TextInput>
-          <Text style={styles.form}>Documento</Text>
-          <TextInput style={styles.textinput} value={typeId} onChangeText={typeId =>SettypeId(typeId)}></TextInput>
+          <TextInput 
+          style={styles.textinput} 
+          label={"Nombre completo"}
+          value = {saveContact.cNombreCompleto}
+          onChangeText={(value)=>handleInputContact('cNombreCompleto',value)}
+          >
+          </TextInput>
           <Text style={styles.form}>Numero Documentos</Text>
-          <TextInput style={styles.textinput} value={id} onChangeText={id =>SetId(id)}></TextInput>
+          <TextInput 
+          style={styles.textinput} 
+          label={"Numero de documento"}
+          value = {saveContact.cNumeroDocumento}
+          onChangeText={(value)=>handleInputContact('cNumeroDocumento',value)}
+          >
+          </TextInput>
           <Text style={styles.form}>Telefono</Text>
-          <TextInput style={styles.textinput} value={number} onChangeText={number =>SetNumber(number)}></TextInput>
+          <TextInput 
+          style={styles.textinput} 
+          label={"Telefono"}
+          value = {saveContact.cTelefono}
+          onChangeText={(value)=>handleInputContact('cTelefono',value)}
+          >
+          </TextInput>
           <Text style={styles.form}>Correo</Text>
-          <TextInput style={styles.textinput} value={email} onChangeText={email =>SetEmail(email)}></TextInput>
+          <TextInput 
+          style={styles.textinput}
+          label={"Correo"}
+          value = {saveContact.cCorreo}
+          onChangeText={(value)=>handleInputContact('cCorreo',value)}
+          >
+          </TextInput>
           <Text style={styles.form}>Ciudad</Text>
-          <TextInput style={styles.textinput} value={city} onChangeText={city =>SetCity(city)}></TextInput>
-          <Button mode='contained' style={styles.formButton} onPress={HandlerSend}>Enviar</Button>
+          <TextInput 
+          style={styles.textinput} 
+          label={"Ciudad"}
+          value = {saveContact.cCiudad}
+          onChangeText={(value)=>handleInputContact('cCiudad',value)}
+          > 
+          </TextInput>
+          <Button 
+          mode='contained' 
+          style={styles.formButton}
+          onPress={handleSendContact}
+
+          >Enviar
+          </Button>
           </View>
         </View>
       </ScrollView>

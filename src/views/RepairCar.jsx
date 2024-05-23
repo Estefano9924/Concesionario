@@ -1,22 +1,43 @@
-import React, { useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { PaperProvider, Text, Card, Button, TextInput } from 'react-native-paper'
+import FirebaseContext from '../../context/firebase/firebaseContext'
+import pedidoContext from '../../context/pedidos/pedidoContext'
+import firebase from '../../firebase'
 
-const RepairCar = ({ navigation }) => {
-
-
-    const [name, Setname] = useState('');
-    const [number, SetNumber] = useState('');
-    const [model, SetModel] = useState('');
-    const [id, SetId] = useState('');
-    const [service, SetServices] = useState('');
-    const [date, SetDate] = useState('');
-
-    const Send = () => {
-        navigation.navigate('RegisterServices', { name: name, number: number, model: model, id: id, service: service, date: date })
-
+const RepairCar = () => {
+const {solRepairCar,obtainRepairCar} = useContext(FirebaseContext)
+const [saveRepairCar, setSaveRepairCar] = useState({
+    fechaR:'',
+    modeloVehiculoR:'',
+    nombreR:'',
+    numDocumentoR:'',
+    placaVehiculoR:'',
+    servicioR:''
+});
+useEffect(()=>{
+    obtainRepairCar()
+},[])
+const handleInputRepairCar = (nameR,value)=>{
+    setSaveRepairCar({
+        ...saveRepairCar,
+    [nameR]:value
+    });
+ };
+ const handleSendRepairCar = async () => {
+    const{nombreR, numDocumentoR, modeloVehiculoR, placaVehiculoR, servicioR, fechaR } = saveRepairCar;
+    if(nombreR && numDocumentoR && modeloVehiculoR && placaVehiculoR && servicioR && fechaR){
+        try{
+            await firebase.db.collection('repairCar').add(saveRepairCar);
+            console.log('Cita Agendada');
+        } catch(error){
+            console.log(error);   
+        }
+    }else{
+        console.log('Validar los campos por favor')
     }
+ }
     return (
         <PaperProvider>
             <ScrollView style={styles.contain}>
@@ -50,18 +71,68 @@ const RepairCar = ({ navigation }) => {
 
                 <View>
                     <Text style={styles.TextForm}>Nombre completo</Text>
-                    <TextInput style={styles.textInput} value={name} onChangeText={Setname} label={"Ingrese el nombre"} />
+                    <TextInput 
+                    style={styles.textInput}                
+                    label={"Ingrese el nombre"}
+                    value={saveRepairCar.nombreR}
+                    onChangeText={(value)=>handleInputRepairCar('nombreR',value)}
+                    />
                     <Text style={styles.TextForm}>Numero Documento</Text>
-                    <TextInput style={styles.textInput} value={number} onChangeText={SetNumber} label={"Ingrese su Numero de Documento"} />
+                    <TextInput 
+                    style={styles.textInput} 
+                    label={"Ingrese su Numero de Documento"}
+                    value={saveRepairCar.numDocumentoR}
+                    onChangeText={(value)=>handleInputRepairCar('numDocumentoR',value)} />
                     <Text style={styles.TextForm}>Modelo del Vehiculo</Text>
-                    <TextInput style={styles.textInput} value={model} onChangeText={SetModel} label={"Ingrese el modelo del vehiculo"} />
+                    <TextInput 
+                    style={styles.textInput} 
+                    label={"Ingrese el modelo del vehiculo"}
+                    value={saveRepairCar.modeloVehiculoR}
+                    onChangeText={(value)=>handleInputRepairCar('modeloVehiculoR',value)}
+                     />
                     <Text style={styles.TextForm}>Placa Vehiculo</Text>
-                    <TextInput style={styles.textInput} value={id} onChangeText={SetId} label={"Ingrese la Placa del vehiculo"} />
+                    <TextInput 
+                    style={styles.textInput} 
+                    label={"Ingrese la Placa del vehiculo"}
+                    value={saveRepairCar.placaVehiculoR}
+                    onChangeText={(value)=>handleInputRepairCar('placaVehiculoR',value)}
+                    />
                     <Text style={styles.TextForm}>Servicio</Text>
-                    <TextInput style={styles.textInput} value={service} onChangeText={SetServices} label={"Ingrese el servicio que desea"} />
+                    <TextInput 
+                    style={styles.textInput} 
+                    label={"Ingrese el servicio que desea"}
+                    value={saveRepairCar.servicioR}
+                    onChangeText={(value)=>handleInputRepairCar('servicioR',value)}
+                    />
                     <Text style={styles.TextForm}>Fecha</Text>
-                    <TextInput style={styles.textInput} value={date} onChangeText={SetDate} label={"DD/MM/AAAA : HH:hh"} />
-                    <Button style={styles.button} mode="contained" onPress={Send}>Enviar solicitud</Button>
+                    <TextInput 
+                    style={styles.textInput} 
+                    label={"DD/MM/AAAA : HH:hh"}
+                    value={saveRepairCar.fechaR}
+                    onChangeText={(value)=>handleInputRepairCar('fechaR',value)}
+                    />
+                    <Button 
+                    style={styles.button} 
+                    mode="contained" 
+                    onPress={handleSendRepairCar}
+                    >Enviar solicitud
+                    </Button>
+                    
+                    {/*{solRepairCar.map((carRepair,i)=>{
+                        const {id,fechaR,modeloVehiculoR,nombreR,numDocumentoR,placaVehiculoR,servicioR} = carRepair
+                        return(
+                            <Fragment key={id}>
+                
+                <Text variant='titleMedium'>La fecha es: <Text>{fechaR}</Text></Text>
+                <Text variant='titleMedium'>El modelo es: <Text>{modeloVehiculoR}</Text></Text>
+                <Text variant='titleMedium'>El nombre es: <Text>{nombreR}</Text></Text>
+                <Text variant='titleMedium'>El numero de documento es: <Text>{numDocumentoR}</Text></Text>
+                <Text variant='titleMedium'>La placa es: <Text>{placaVehiculoR}</Text></Text>
+                <Text variant='titleMedium'>El servicio es: <Text>{servicioR}</Text></Text>
+                
+                </Fragment>
+                        )
+                    })}*/}
                 </View>
             </ScrollView>
         </PaperProvider>

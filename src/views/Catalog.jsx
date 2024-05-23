@@ -20,6 +20,7 @@ const Catalog = () => {
     <ScrollView>
         <View style ={styles.container}>       
             <Text style = {styles.title}>Catalogo de vehiculos</Text>
+            
             {vehiculo.map((car,i)=>{
                 const {id,Marca,Color,modelo,referencia,imagen,precio,descripcion} = car
                 return(
@@ -33,9 +34,9 @@ const Catalog = () => {
                     <Text variant='titleMedium'>El precio es: $<Text>{precio}</Text></Text>
                     <Text variant='titleMedium'>La descripcion es: <Text>{descripcion}</Text></Text>
                     <Card>
-                        <Card.Cover source ={{uri:imagen}} />
+                        <Card.Cover size = "70px" source ={{uri:imagen}} />
                     </Card>
-                    <Button mode = "contained" style={styles.button} onPress={()=>{navigation.navigate('BuyVehicle')}}> Comprar 🛒</Button>
+                    <Button mode = "contained" style={styles.button} onPress={()=>{chooseVehicle(car);navigation.navigate('BuyVehicle')}}> Comprar 🛒</Button>
                     </View>
                     </Fragment>
                 )
