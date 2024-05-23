@@ -1,41 +1,43 @@
 import React, { useContext, useEffect,useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button, PaperProvider, Text, TextInput } from 'react-native-paper'
-import firebase from 'firebase/compat/app'
+import firebase from '../../firebase'
 import FirebaseContext from '../../context/firebase/firebaseContext'
 import pedidoContext from '../../context/pedidos/pedidoContext'
+
 
 
 const Quotation = () => {
 
   const {solQuotation, obtainQuotation} = useContext(FirebaseContext)
-  const [saveQuotation, setSaveQuotation] = useState({
-    nombreCompleto: '',
-    modeloVehiculo: '',
-    correo: ''
+  const [saveQuotation,setSaveQuotation] = useState({
+    correoC:'',
+    modeloVehiculoC:'',
+    nombreCompletoC:''
   });
   useEffect(()=>{
     obtainQuotation()
-  },[])
-  const handleInputQuotation = (name, value) => {
+  },[]);
+  const handleInputQuotation = (nameQ,value)=>{
     setSaveQuotation({
       ...saveQuotation,
-      [name]:value
+      [nameQ]:value
     });
   };
-  const handleSendQuotation = async ()=>{
-    const {nombreCompleto,modeloVehiculo,correo}=saveQuotation;
-    if(nombreCompleto && modeloVehiculo && correo){
-      try{
-        await firebase.db.collection('cotizacion').add(saveQuotation);
-        console.log('cotizacion enviada');
-      }catch(error){
-        console.log(error);
-      }
-    } else{
-      console.log('Validar los campos por favor')
+ const handleSendQuotation = async () =>{
+  const {nombreCompletoC, modeloVehiculoC, correoC } = saveQuotation;
+  if(nombreCompletoC && modeloVehiculoC && correoC) {
+    try{
+      await firebase.db.collection('quotationC').add(saveQuotation);
+      console.log('Cotizacion enviada');
+    }catch(error){
+      console.log(error);
     }
-  };
+  } else{
+    console.log('Validar los campos por favor')
+  }
+ }
+
   return (
   <PaperProvider>
     <View>
@@ -44,21 +46,22 @@ const Quotation = () => {
         <TextInput 
         style={styles.textInput} 
         label={"Nombre Completo"}
-        value={saveQuotation.nombreCompleto}
-        onChangeText={(value)=>handleInputQuotation('nombreCompleto',value)}
+        value = {saveQuotation.nombreCompletoC}
+        onChangeText={(value)=>handleInputQuotation('nombreCompletoC',value)}
         />    
         <Text style={styles.titleForm}>Modelo del Vehiculo</Text>
         <TextInput style={styles.textInput}
          label={"Modelo del vehiculo"}
-         value={saveQuotation.modeloVehiculo}
-        onChangeText={(value)=>handleInputQuotation('modeloVehiculo',value)}
+         value = {saveQuotation.modeloVehiculoC}
+        onChangeText={(value)=>handleInputQuotation('modeloVehiculoC',value)}
          />    
         <Text style={styles.titleForm}>Correo</Text>
         <TextInput 
         style={styles.textInput} 
         label={"example@correo.com"}
-        value={saveQuotation.correo}
-        onChangeText={(value)=>handleInputQuotation('correo',value)}
+        value = {saveQuotation.correoC}
+        onChangeText={(value)=>handleInputQuotation('correoC',value)}
+        
         />
         <Button 
         mode = "contained" 

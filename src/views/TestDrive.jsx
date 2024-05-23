@@ -76,7 +76,7 @@ const TestDrive = () => {
               Enviar solicitud
             </Button>
 
-            {solTestDrive.map((testDrive,i)=>{
+            {/*{solTestDrive.map((testDrive,i)=>{
 
               const {id,nombreCompleto,modeloVehiculo,fecha} = testDrive
                return(
@@ -88,7 +88,7 @@ const TestDrive = () => {
                 
                 </Fragment>
       )
-    })}  
+    })}*/}  
         </View>
     </PaperProvider>   
   )

@@ -1,4 +1,4 @@
-import { selectVehicle,selectTestDrive,sendTestDrive,selectQuotation } from "../../type";
+import { selectVehicle,selectTestDrive,sendTestDrive,selectQuotation,selectRepairCar, selectContact } from "../../type";
 
 export default (state,action) =>{
 
@@ -21,8 +21,17 @@ export default (state,action) =>{
         case selectQuotation:
             return{
                 ...state,
-                quotation: action.payload
-            }   
+                carQuotation: action.payload
+            }
+        case selectRepairCar:
+            return{
+                ...state,
+                carRepair: action.payload
+            }
+        case selectContact:
+            return{
+                carContact: action.payload
+            }           
         default:
             return state;
     }

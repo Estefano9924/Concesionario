@@ -1,7 +1,7 @@
 import React,{useReducer} from "react";
 import PedidoContext from "./pedidoContext";
 import PedidoReducer from "./pedidoReducer";
-import { selectVehicle,selectTestDrive,sendTestDrive,selectQuotation } from "../../type";
+import { selectVehicle,selectTestDrive,sendTestDrive,selectQuotation,selectRepairCar,selectContact } from "../../type";
 
 const PedidoState = props =>{
     //Crea ek state inicial
@@ -9,7 +9,9 @@ const PedidoState = props =>{
         pedido:[],
         car: null,
         testDrive: null,
-        quotation: null
+        carRepair: null,
+        carQuotation: null,
+        carContact: null
     }
 
     //userReducer con el dispatch
@@ -27,11 +29,25 @@ const PedidoState = props =>{
             payload: testDrive
         })
     }
+    //RepairCar
+    const chooseRepairCar = carRepair => {
+        dispatch({
+            type:selectRepairCar,
+            payload: carRepair
+        })
+    }
     //quotation
-    const conQuotation = quotation =>{
+    const chooseQuotation = carQuotation =>{
         dispatch({
             type:selectQuotation,
-            payload: quotation
+            payload: carQuotation
+        })
+    }
+    //contact
+    const chooseContact = carContact => {
+        dispatch({
+            type:selectContact,
+            payload: carContact
         })
     }
     //Confirmar testdrive
@@ -51,8 +67,12 @@ const PedidoState = props =>{
             chooseVehicle,
             testDrive:state.testDrive,
             conTestDrive,
-            quotation:state.quotation,
-            conQuotation
+            carRepair:state.carRepair,
+            chooseRepairCar,
+            carQuotation:state.carQuotation,
+            chooseQuotation,
+            carContact:state.carContact,
+            chooseContact
             
         }}
         >
